@@ -8,7 +8,9 @@ import { usePathname } from 'next/navigation';
 import { SIDENAV_ITEMS } from '@/constants';
 import { SideNavItem } from '@/types';
 import { Icon } from '@iconify/react';
-
+import logo from '../../public/logo.png'
+import Image from 'next/image';
+ 
 const SideNav = () => {
   return (
     <div className="md:w-60 bg-white h-screen flex-1 fixed border-r border-zinc-200 hidden md:flex">
@@ -17,8 +19,10 @@ const SideNav = () => {
           href="/"
           className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
         >
-          <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
-          <span className="font-bold text-xl hidden md:flex">Logo</span>
+          <div>
+          
+        </div>
+          <span className="font-bold text-2xl hidden md:flex">DotMind.</span>
         </Link>
 
         <div className="flex flex-col space-y-2  md:px-6 grow">
@@ -49,7 +53,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         <>
           <button
             onClick={toggleSubMenu}
-            className={`flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between hover:bg-zinc-100 ${
+            className={`transition ease-in-out duration-300 flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between hover:bg-zinc-100 ${
               pathname.includes(item.path) ? 'bg-zinc-100' : ''
             }`}
           >

@@ -10,6 +10,15 @@ import { SideNavItem } from '@/types';
 import { Icon } from '@iconify/react';
 import logo from '../../public/logo.png'
 import Image from 'next/image';
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
  
 const SideNav = () => {
   return (
@@ -19,9 +28,6 @@ const SideNav = () => {
           href="/"
           className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
         >
-          <div>
-          
-        </div>
           <span className="font-bold text-2xl hidden md:flex">DotMind.</span>
         </Link>
 
@@ -30,8 +36,17 @@ const SideNav = () => {
             return <MenuItem key={idx} item={item} />;
           })}
         </div>
-        <div className="flex justify-center space-y-2 ">
-          <button className='bg-black text-white px-12 mb-4 py-3 rounded-md'>Connect Wallet</button>
+        <div className="flex justify-center space-y-2 pb-6">
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select Network" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">XAXAXA</SelectItem>
+            <SelectItem value="dark">XBXBXB</SelectItem>
+            <SelectItem value="system">XCXCXC</SelectItem>
+          </SelectContent>
+        </Select>
         </div>
       </div>
     </div>

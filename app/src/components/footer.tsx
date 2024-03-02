@@ -20,7 +20,7 @@ const Footer = () => {
   };
 
   return (
-    <div className={cn('sticky bottom-0 z-30 w-full border-t bg-gray-100')}>
+    <div className={cn('sticky bottom-0 z-30 w-full bg-gray-100')}>
       <div className="flex items-center justify-between px-4 py-4">
         {/* Input field */}
         <input

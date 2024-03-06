@@ -1,0 +1,10 @@
+[
+  {
+    "alias": "Binance Private Key",
+    "private_key": "/home/user/desktop/"
+  },
+  {
+    "alias": "Coinbase Private Key",
+    "private_key": "key2"
+  }
+]

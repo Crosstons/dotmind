@@ -22,7 +22,6 @@ const Footer = () => {
   return (
     <div className={cn('sticky bottom-0 z-30 w-full bg-gray-100')}>
       <div className="flex items-center justify-between px-4 py-4">
-        {/* Input field */}
         <input
           type="text"
           value={inputValue}
@@ -30,8 +29,6 @@ const Footer = () => {
           placeholder="Enter your message..."
           className="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none"
         />
-
-        {/* Send button */}
         <Button>
             Submit
         </Button>

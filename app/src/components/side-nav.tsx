@@ -28,6 +28,11 @@ const SideNav = () => {
           href="/"
           className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
         >
+          <Image
+          src={logo}
+          alt='logo'
+          className='w-10 h-10'
+          />
           <span className="font-bold text-2xl hidden md:flex">DotMind.</span>
         </Link>
 

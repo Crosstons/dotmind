@@ -28,14 +28,14 @@ const UserBotinterface = () => {
       <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100">
         {/* First div element */}
         <div className="flex flex-col items-start">
-          <div className="flex flex-col items-start justify-center bg-white rounded-lg shadow-md p-6 mb-6 min-w-[550px] max-w-[600px]">
+          <div className="flex flex-col items-start justify-center rounded-lg p-6 min-w-[550px] max-w-[600px]">
             {/* Circle avatars */}
             <div className="flex items-center mb-4">
-              <div className="bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+              <div className="bg-gray-300 w-12 h-12  flex items-center justify-center mr-4 mb-2 rounded-full">
                 <Image
                   src={Ava}
                   alt="Avatar"
-                  className="w-8 h-8 rounded-full"
+                  className="w-10 h-10 rounded-full"
                 />
               </div>
             </div>
@@ -49,21 +49,21 @@ const UserBotinterface = () => {
           </div>
 
           {/* Second div element */}
-          <div className="flex flex-col items-start justify-center bg-gray-200 rounded-lg shadow-md p-6 min-w-[550px] max-w-[600px]">
+          <div className="flex flex-col items-start justify-center rounded-lg p-6 min-w-[550px] max-w-[600px]">
             {/* Circle avatars */}
             <div className="flex items-center mb-4">
               <div className="bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center mr-4">
                 <Image
                   src={logo}
                   alt="Logo"
-                  className="w-8 h-8"
+                  className="w-12 h-12"
                 />
               </div>
             </div>
             {/* Name and dummy text */}
             <div>
               <p className="font-semibold text-lg mb-1">DotMind</p>
-              <div className="max-w-lg overflow-hidden bg-gray-100 rounded-lg w-full">
+              <div className="max-w-lg overflow-hidden bg-white rounded-lg w-full">
                 <p className="p-4 text-gray-600">{dummyTexts[currentTextIndex]}</p>
               </div>
             </div>

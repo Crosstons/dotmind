@@ -3,5 +3,10 @@
     "prompt": "astar price",
     "response": "0.15366327046522843",
     "timestamp": "2024-03-09 16:45:36.380126"
+  },
+  {
+    "prompt": "create a new key and name it 'test'",
+    "response": "Keypair created and stored in file - ./ai_llm/local_keys/test.txt",
+    "timestamp": "2024-03-10 00:44:41.270539"
   }
 ]

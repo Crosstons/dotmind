@@ -1,3 +1,10 @@
 [
-  
+  {
+    "alias": "Vking",
+    "private_key": "./local_keys/Vking.txt"
+  },
+  {
+    "alias": "test",
+    "private_key": "./ai_llm/local_keys/test.txt"
+  }
 ]

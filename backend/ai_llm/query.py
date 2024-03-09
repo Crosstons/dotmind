@@ -1,6 +1,6 @@
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 from sentence_transformers import CrossEncoder
-from .modules import price_check
+from .modules import price_check, create_key
 
 model_path = "./ai_llm/nli-deberta-v3-xsmall"
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
@@ -11,7 +11,7 @@ classifier = pipeline("zero-shot-classification", model=model, tokenizer=tokeniz
 
 # sent = "create a new key title John"
 
-candidate_labels = ["key creation", "key deletion", "balance query", "price query", "transfer", "timed transfer"]
+candidate_labels = ["key creation", "key deletion", "balance query", "price query", "transfer", "timed transfer", "address addition", "address removal"]
 
 def check_query(input):
     res = classifier(input, candidate_labels)
@@ -21,7 +21,8 @@ async def process_query(input):
     _temp = check_query(str(input))
     if not _temp['score'] < 0.75:
         if _temp['label'] == "key creation":
-            print("key creation")
+            res = await create_key(input)
+            return res
         elif _temp['label'] == "key deletion":
             print("key deletion")
         elif _temp['label'] == "balance query":

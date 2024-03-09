@@ -1,49 +1,56 @@
 import json
 import os
 
-def create_address_book_file(filename):
-    try:
-        with open(filename, "w") as f:
-            json.dump([], f)
-    except IOError as e:
-        print("Error creating file:", e)
+FILENAME = './db_json/json_files/address_book.json'
 
-def load_address_book_data(filename):
+def load_address_book_data():
     try:
-        with open(filename, "r") as f:
+        with open(FILENAME, "r") as f:
             return json.load(f)
     except (IOError, json.JSONDecodeError) as e:
         print("Error loading data:", e)
         return []
 
-def save_address_book_data(filename, data):
+def save_address_book_data(data):
     try:
-        with open(filename, "w") as f:
+        with open(FILENAME, "w") as f:
             json.dump(data, f, indent=2)
     except IOError as e:
         print("Error saving data:", e)
 
-def add_json_object(filename, alias, location):
-    data = load_address_book_data(filename)
-    new_object = {"alias": alias, "location": location}
-    data.append(new_object)
-    save_address_book_data(filename, data)
+def add_json_object(alias, location):
+    data = load_address_book_data()
+    if not any(obj["alias"] == alias for obj in data):
+        new_object = {"alias": alias, "location": location}
+        data.append(new_object)
+        save_address_book_data(data)
+        return True
+    else:
+        print("Alias already exists.")
+        return False
 
-def update_json_object(filename, alias, new_location):
-    data = load_address_book_data(filename)
+def update_json_object(alias, new_location):
+    data = load_address_book_data()
     for obj in data:
         if obj["alias"] == alias:
             obj["location"] = new_location
-            break
-    save_address_book_data(filename, data)
+            save_address_book_data(data)
+            return True
+    print("Alias not found.")
+    return False
 
-def delete_json_object(filename, alias):
-    data = load_address_book_data(filename)
-    data = [obj for obj in data if obj["alias"] != alias]
-    save_address_book_data(filename, data)
+def delete_json_object(alias):
+    data = load_address_book_data()
+    updated_data = [obj for obj in data if obj["alias"] != alias]
+    if len(updated_data) != len(data):
+        save_address_book_data(updated_data)
+        return True
+    else:
+        print("Alias not found.")
+        return False
 
-def get_value_from_key(filename, key):
-    data = load_address_book_data(filename)
+def get_value_from_key(key):
+    data = load_address_book_data()
     for obj in data:
         if obj["alias"] == key:
             return obj["location"]
@@ -52,17 +59,13 @@ def get_value_from_key(filename, key):
 
 # ============= Test ===============
 
-filename = 'address_book.json'
-
 try:
-    create_address_book_file(filename)
+    add_json_object("Binance Address", "home/desktop/binance")
+    add_json_object("Coinbase Address", "home/desktop/coinbase")
 
-    add_json_object(filename, "Binance Address", "home/desktop/binance")
-    add_json_object(filename, "Coinbase Address", "home/desktop/coinbase")
+    print(load_address_book_data())
 
-    print(load_address_book_data(filename))
-
-    print(get_value_from_key(filename, "Binance Address"))
-    print(get_value_from_key(filename, "Coinbase Address"))
+    print(get_value_from_key("Binance Address"))
+    print(get_value_from_key("Coinbase Address"))
 except Exception as e:
     print("An error occurred:", e)

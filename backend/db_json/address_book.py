@@ -18,10 +18,10 @@ def save_address_book_data(data):
     except IOError as e:
         print("Error saving data:", e)
 
-def add_json_object(alias, location):
+def add_json_object(alias, address):
     data = load_address_book_data()
     if not any(obj["alias"] == alias for obj in data):
-        new_object = {"alias": alias, "location": location}
+        new_object = {"alias": alias, "address": address}
         data.append(new_object)
         save_address_book_data(data)
         return True
@@ -29,11 +29,11 @@ def add_json_object(alias, location):
         print("Alias already exists.")
         return False
 
-def update_json_object(alias, new_location):
+def update_json_object(alias, new_address):
     data = load_address_book_data()
     for obj in data:
         if obj["alias"] == alias:
-            obj["location"] = new_location
+            obj["location"] = new_address
             save_address_book_data(data)
             return True
     print("Alias not found.")
@@ -53,7 +53,7 @@ def get_value_from_key(key):
     data = load_address_book_data()
     for obj in data:
         if obj["alias"] == key:
-            return obj["location"]
+            return obj["address"]
     return None
 
 

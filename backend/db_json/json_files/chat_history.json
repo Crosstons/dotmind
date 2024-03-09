@@ -8,5 +8,30 @@
     "prompt": "create a new key and name it 'test'",
     "response": "Keypair created and stored in file - ./ai_llm/local_keys/test.txt",
     "timestamp": "2024-03-10 00:44:41.270539"
+  },
+  {
+    "prompt": "what is the balance of Bholu on Aleph Zero Testnet Network?",
+    "response": "This is the raw balance of the address - 25301989315289120, please adjust for the decimals",
+    "timestamp": "2024-03-10 01:14:48.641900"
+  },
+  {
+    "prompt": "what is the balance of Bholu on Polkadot?",
+    "response": "This is the raw balance of the address - 0, please adjust for the decimals",
+    "timestamp": "2024-03-10 01:20:28.474473"
+  },
+  {
+    "prompt": "delete my keypair titled 'test'",
+    "response": "Keypair file deleted - ./ai_llm/local_keys/test.txt",
+    "timestamp": "2024-03-10 01:33:01.658635"
+  },
+  {
+    "prompt": "delete/remove my keypair under the alias vking",
+    "response": "Keypair file deleted - ./ai_llm/local_keys/vking.txt",
+    "timestamp": "2024-03-10 01:40:47.339964"
+  },
+  {
+    "prompt": "delete/remove my keypair under the alias Vking",
+    "response": "Keypair file deleted - ./ai_llm/local_keys/Vking.txt",
+    "timestamp": "2024-03-10 01:41:16.687064"
   }
 ]

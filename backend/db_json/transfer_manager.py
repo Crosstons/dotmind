@@ -38,16 +38,16 @@ def get_transfers_by_account(account):
 
 # ============= Test ===============
 
-try:
-    schedule_transfer("Account1", "Account2", 100, "2024-03-10 08:00:00")
-    schedule_transfer("Account2", "Account3", 50, "2024-03-12 12:00:00")
+# try:
+#     schedule_transfer("Account1", "Account2", 100, "2024-03-10 08:00:00")
+#     schedule_transfer("Account2", "Account3", 50, "2024-03-12 12:00:00")
 
-    print(load_transfer_manager_data())
+#     print(load_transfer_manager_data())
 
-    print(get_transfers_by_account("Account2"))
+#     print(get_transfers_by_account("Account2"))
 
-    cancel_transfer("Account2", "Account3", "2024-03-12 12:00:00")
+#     cancel_transfer("Account2", "Account3", "2024-03-12 12:00:00")
 
-    print(load_transfer_manager_data())
-except Exception as e:
-    print("An error occurred:", e)
+#     print(load_transfer_manager_data())
+# except Exception as e:
+#     print("An error occurred:", e)

@@ -59,13 +59,13 @@ def get_value_from_key(key):
 
 # ============= Test ===============
 
-try:
-    add_json_object("Binance Address", "home/desktop/binance")
-    add_json_object("Coinbase Address", "home/desktop/coinbase")
+# try:
+#     add_json_object("Binance Address", "home/desktop/binance")
+#     add_json_object("Coinbase Address", "home/desktop/coinbase")
 
-    print(load_address_book_data())
+#     print(load_address_book_data())
 
-    print(get_value_from_key("Binance Address"))
-    print(get_value_from_key("Coinbase Address"))
-except Exception as e:
-    print("An error occurred:", e)
+#     print(get_value_from_key("Binance Address"))
+#     print(get_value_from_key("Coinbase Address"))
+# except Exception as e:
+#     print("An error occurred:", e)

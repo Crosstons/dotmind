@@ -30,11 +30,11 @@ def get_chat_history():
 
 # ============= Test ===============
 
-try:
+# try:
 
-    add_chat_entry("How are you?", "I'm fine, thank you!", "2024-03-10 08:00:00")
-    add_chat_entry("What's the weather like today?", "It's sunny and warm.", "2024-03-10 08:05:00")
+#     add_chat_entry("How are you?", "I'm fine, thank you!", "2024-03-10 08:00:00")
+#     add_chat_entry("What's the weather like today?", "It's sunny and warm.", "2024-03-10 08:05:00")
 
-    print(get_chat_history())
-except Exception as e:
-    print("An error occurred:", e)
+#     print(get_chat_history())
+# except Exception as e:
+#     print("An error occurred:", e)

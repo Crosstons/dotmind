@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request 
 from db_json import chat_history_manager, private_key_manager, address_book, transfer_manager
+from ai_llm.query import process_query
 
 app = Flask("DotMind") 
 
@@ -18,9 +19,10 @@ def show_article(key):
     return jsonify(addr)
 
 @app.route('/prompt/', methods=['POST'])
-def create_user():
+async def prompt():
     user_prompt = request.get_json()
     print(user_prompt)
+    out = await process_query(user_prompt['prompt'])
 
     # Validate the data and create the user (implementation omitted)
-    return jsonify(user_prompt)
+    return jsonify(out)

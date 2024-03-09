@@ -59,13 +59,13 @@ def get_private_key_from_alias(alias):
 
 # ============= Test ===============
 
-try:
-    add_private_key_object("Binance Private Key", "/home/user/desktop/")
-    add_private_key_object("Coinbase Private Key", "key2")
+# try:
+#     add_private_key_object("Binance Private Key", "/home/user/desktop/")
+#     add_private_key_object("Coinbase Private Key", "key2")
 
-    print(load_private_key_manager_data())
+#     print(load_private_key_manager_data())
 
-    print(get_private_key_from_alias("Binance Private Key"))
-    print(get_private_key_from_alias("Coinbase Private Key"))
-except Exception as e:
-    print("An error occurred:", e)
+#     print(get_private_key_from_alias("Binance Private Key"))
+#     print(get_private_key_from_alias("Coinbase Private Key"))
+# except Exception as e:
+#     print("An error occurred:", e)

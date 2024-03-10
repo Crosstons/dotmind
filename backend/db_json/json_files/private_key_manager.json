@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "alias": "default",
+    "private_key": "./ai_llm/local_keys/default.txt"
+  },
+  {
+    "alias": "Sam",
+    "private_key": "./ai_llm/local_keys/Sam.txt"
+  }
+]

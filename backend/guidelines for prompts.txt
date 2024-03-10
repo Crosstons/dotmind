@@ -1,0 +1,11 @@
+as the project is still a work in progress it has it's limitation so here are the guidelines for prompts - 
+
+> whenever you want to add a new address to the address book make sure that the address is in single inverted commas.
+
+> never use a direct address for transfer or scheduled transfer, make sure that you use a Alias that has been registered in the address book
+
+> all transactions will be signed with an Alias "default" in the private keys file as for now
+
+> please include decimal zeros while entering a transfer prompt for now
+
+> start a scheduled transfer instruction with 'timed transfer - ....'

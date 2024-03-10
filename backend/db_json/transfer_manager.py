@@ -18,9 +18,9 @@ def save_transfer_manager_data(data):
     except IOError as e:
         print("Error saving data:", e)
 
-def schedule_transfer(from_account, to_account, amount, time):
+def schedule_transfer(from_account, to_account, amount, time, rpc):
     data = load_transfer_manager_data()
-    new_transfer = {"from": from_account, "to": to_account, "amount": amount, "time": time}
+    new_transfer = {"from": from_account, "to": to_account, "amount": amount, "time": time, "rpc" : rpc}
     data.append(new_transfer)
     save_transfer_manager_data(data)
 

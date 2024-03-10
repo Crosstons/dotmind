@@ -53,5 +53,35 @@
     "prompt": "remove address for vking from the address book",
     "response": "alias vking deleted from the address book",
     "timestamp": "2024-03-10 12:45:50.482496"
+  },
+  {
+    "prompt": "create a new keypair and name it 'default'",
+    "response": "Keypair created and stored in file - ./ai_llm/local_keys/default.txt",
+    "timestamp": "2024-03-10 14:40:03.620414"
+  },
+  {
+    "prompt": "add address '5ECfLuhUtoBVzHVSfCDTpCQrh61NmiC3qMm1Kfic4TNB2nJH' in the address book under the alias Sam",
+    "response": "alias 'Sam' added for the address - '5ECfLuhUtoBVzHVSfCDTpCQrh61NmiC3qMm1Kfic4TNB2nJH'",
+    "timestamp": "2024-03-10 14:59:20.881973"
+  },
+  {
+    "prompt": "transfer 10000000000 AZERO to Sam on Aleph Zero network",
+    "response": "transfer execution failed due to the error - {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Inability to pay some fees (e.g. account balance too low)'}",
+    "timestamp": "2024-03-10 15:13:48.756602"
+  },
+  {
+    "prompt": "transfer 10000000000 AZERO to Sam on Aleph Zero Testnet network",
+    "response": "transfer executed successfully for 10000000000 to Sam using the rpc wss://aleph-zero-testnet-rpc.dwellir.com",
+    "timestamp": "2024-03-10 15:14:47.971461"
+  },
+  {
+    "prompt": "timed transfer - 10000000000 AZERO to Sam on Aleph Zero Testnet network in 5 days",
+    "response": "scheduled transfer : 10000000000 to Sam on 2024-03-15 15:55:31.321329 on wss://aleph-zero-testnet-rpc.dwellir.com",
+    "timestamp": "2024-03-10 15:55:32.745026"
+  },
+  {
+    "prompt": "transfer 10000000000 AZERO to Sam on Aleph Zero Testnet network",
+    "response": "transfer executed successfully for 10000000000 to Sam using the rpc wss://aleph-zero-testnet-rpc.dwellir.com",
+    "timestamp": "2024-03-10 15:59:08.991105"
   }
 ]

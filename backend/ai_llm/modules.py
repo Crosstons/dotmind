@@ -1,7 +1,7 @@
 import google.generativeai as genai
 from substrateinterface import SubstrateInterface, Keypair
 from substrateinterface.exceptions import SubstrateRequestException
-from db_json import chat_history_manager, private_key_manager, address_book
+from db_json import chat_history_manager, private_key_manager, address_book, transfer_manager
 from datetime import datetime
 import requests
 import asyncio
@@ -12,8 +12,21 @@ def extract_single_quoted(text):
     pattern = r"'(?P<content>.*?)'"  # Named capture group
     return [match.group("content") for match in re.finditer(pattern, text)]
 
+def read_pk(path):
+    try:
+        with open(path, 'r') as file:
+            contents = file.read()
+            return contents
+    except FileNotFoundError:
+        print(f"Error: File '{path}' not found.")
+        return None
+    except Exception as e:  # Catch other potential errors
+        print(f"An error occurred: {e}")
+        return None
+
 # Set up the model
 
+# replace the "KEY" with your own Google Gemini API key
 genai.configure(api_key="KEY")
 
 generation_config = {
@@ -243,3 +256,113 @@ async def address_remove(input):
         return f'Alias "{alias}" deleted from the address book'
     except:
         return "something went wrong, please try again"
+    
+async def instant_transfer(input):
+    try:
+        convo = model.start_chat(history=[
+        {
+            "role": "user",
+            "parts": ["Here's a sample url of a dwellir API endpoint which connects with a node of Aleph Zero network and enables us to make requests to the network - wss://aleph-zero-rpc.dwellir.com, for testnet the url becomes - wss://aleph-zero-testnet-rpc.dwellir.com, I will next provide you a prompt containing name of some other Polkadot ecosystem chain, I want you to only build the corresponding dwellir wss api for it. The output should be only the URL, do not give extra text or information."]
+        },
+        {
+            "role": "model",
+            "parts": ["​"]
+        },
+        ])
+
+        convo.send_message(f"Only give the dwellir wss url for the network being mentioned - {input}")
+        url = convo.last.text
+        print(url)
+
+        convo.send_message(f"You are being given a transaction prompt, from which you need to find out the amount that the user wants to send. Only give amount as output (for example - 10) - {input}")
+        amt = convo.last.text
+        print(amt)
+
+        convo.send_message(f"Identify the alias or name given in the string and only return it as the response (no other information should be present in the response) - {input}")
+        alias = convo.last.text
+        print(alias)
+
+        substrate = SubstrateInterface(url)
+
+        call = substrate.compose_call(
+            call_module='Balances',
+            call_function='transfer_allow_death',
+            call_params={
+                'dest': address_book.get_value_from_key(alias),
+                'value': amt
+            }
+        )
+
+        seed = read_pk(private_key_manager.get_private_key_from_alias("default"))
+
+        extrinsic = substrate.create_signed_extrinsic(call=call, keypair=Keypair.create_from_mnemonic(seed))
+
+        try:
+            receipt = substrate.submit_extrinsic(extrinsic, wait_for_inclusion=True)
+
+            print('Extrinsic "{}" included in block "{}"'.format(
+                receipt.extrinsic_hash, receipt.block_hash
+            ))
+
+            if receipt.is_success:
+
+                print('✅ Success, triggered events:')
+                for event in receipt.triggered_events:
+                    print(f'* {event.value}')
+
+                # updating dbs
+
+                curr = datetime.now()
+                chat_history_manager.add_chat_entry(input, f'transfer executed successfully for {amt} to {alias} using the rpc {url}', str(curr.now()))
+                
+                return "transfer instruction was successfull"
+
+            else:
+                print('⚠️ Extrinsic Failed: ', receipt.error_message)
+
+        except SubstrateRequestException as e:
+            print("Failed to send: {}".format(e))
+
+            curr = datetime.now()
+            chat_history_manager.add_chat_entry(input, f'transfer execution failed due to the error - {e}', str(curr.now()))
+    
+    except:
+        return "failed to send the transaction, something went wrong"
+
+async def timed_transfer(input):
+    try:
+        convo = model.start_chat(history=[
+        {
+            "role": "user",
+            "parts": ["Here's a sample url of a dwellir API endpoint which connects with a node of Aleph Zero network and enables us to make requests to the network - wss://aleph-zero-rpc.dwellir.com, for testnet the url becomes - wss://aleph-zero-testnet-rpc.dwellir.com, I will next provide you a prompt containing name of some other Polkadot ecosystem chain, I want you to only build the corresponding dwellir wss api for it. The output should be only the URL, do not give extra text or information."]
+        },
+        {
+            "role": "model",
+            "parts": ["​"]
+        },
+        ])
+
+        convo.send_message(f"Only give the dwellir wss url for the network being mentioned - {input}")
+        url = convo.last.text
+        print(url)
+
+        convo.send_message(f"You are being given a transaction prompt, from which you need to find out the amount that the user wants to send. Only give amount as output (for example - 10) - {input}")
+        amt = convo.last.text
+        print(amt)
+
+        convo.send_message(f"Identify the alias or name given in the string and only return it as the response (no other information should be present in the response) - {input}")
+        alias = convo.last.text
+        print(alias)
+
+        curr = datetime.now()
+        convo.send_message(f"The current date time is {str(curr)}. I will give you a prompt which will have a target time in it, i want you to give me the target datetime relative to the current time and the response should only contain the output datetime - {input}")
+        _timed = convo.last.text
+        print(_timed)
+
+        transfer_manager.schedule_transfer("default", alias, amt, _timed, url)
+        chat_history_manager.add_chat_entry(input, f'scheduled transfer : {amt} to {alias} on {_timed} on {url}', str(curr.now()))
+
+        return "Scheduled transfer successfully"
+    
+    except:
+        return "something went wrong while scheduling transfer"

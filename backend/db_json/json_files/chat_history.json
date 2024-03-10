@@ -33,5 +33,25 @@
     "prompt": "delete/remove my keypair under the alias Vking",
     "response": "Keypair file deleted - ./ai_llm/local_keys/Vking.txt",
     "timestamp": "2024-03-10 01:41:16.687064"
+  },
+  {
+    "prompt": "remove address 'Bholu' from the address book",
+    "response": "alias Bholu deleted from the address book",
+    "timestamp": "2024-03-10 12:25:25.360834"
+  },
+  {
+    "prompt": "add address '12NUJVQF6AMMBtjSFq2eASunCxQ9SisdNG5ZWb8AVkftuupw' as vking alias",
+    "response": "alias 'vking' added for the address - ''12NUJVQF6AMMBtjSFq2eASunCxQ9SisdNG5ZWb8AVkftuupw''",
+    "timestamp": "2024-03-10 12:38:25.278397"
+  },
+  {
+    "prompt": "add address '12NUJVQF6AMMBtjSFq2eASunCxQ9SisdNG5ZWb8AVkftuupw' as vking alias",
+    "response": "alias 'vking' added for the address - '12NUJVQF6AMMBtjSFq2eASunCxQ9SisdNG5ZWb8AVkftuupw'",
+    "timestamp": "2024-03-10 12:44:15.373269"
+  },
+  {
+    "prompt": "remove address for vking from the address book",
+    "response": "alias vking deleted from the address book",
+    "timestamp": "2024-03-10 12:45:50.482496"
   }
 ]

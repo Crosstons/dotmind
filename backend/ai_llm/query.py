@@ -1,6 +1,6 @@
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 from sentence_transformers import CrossEncoder
-from .modules import price_check, create_key, delete_key, balance_check
+from .modules import price_check, create_key, delete_key, balance_check, address_add, address_remove
 
 model_path = "./ai_llm/nli-deberta-v3-xsmall"
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
@@ -34,9 +34,11 @@ async def process_query(input):
         elif _temp['label'] == "timed transfer":
             print("timed transfer")
         elif _temp['label'] == "address addition":
-            print("address addition")
+            res = await address_add(input)
+            return res
         elif _temp['label'] == "address removal":
-            print("address removal")
+            res = await address_remove(input)
+            return res
         else:
             res = await price_check(input)
             return res

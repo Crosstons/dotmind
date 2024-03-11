@@ -11,10 +11,28 @@ def run_app():
 def history(): 
     # Load chat history data
     chat_history_data = chat_history_manager.get_chat_history()
-    return jsonify(chat_history_data)
+    response = jsonify(chat_history_data)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+    
+@app.route('/addr_book/', methods=['GET']) 
+def address_book(): 
+    # Load chat history data
+    addr_book_data = address_book.load_address_book_data()
+    response = jsonify(addr_book_data)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response 
+
+@app.route('/scheduled_transfers/', methods=['GET']) 
+def address_book(): 
+    # Load chat history data
+    scheduled = transfer_manager.load_transfer_manager_data()
+    response = jsonify(scheduled)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response 
 
 @app.route('/address/<key>', methods=['GET'])
-def show_article(key):
+def get_key(key):
     addr = address_book.get_value_from_key(key)
     return jsonify(addr)
 

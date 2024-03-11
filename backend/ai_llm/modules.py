@@ -115,7 +115,7 @@ async def balance_check(input):
 
         # updating dbs
         curr = datetime.now()
-        chat_history_manager.add_chat_entry(input, f'This is the raw balance of the address - {result.value['data']['free']}, please adjust for the decimals', str(curr.now()))
+        chat_history_manager.add_chat_entry(input, f"This is the raw balance of the address - {result.value['data']['free']}, please adjust for the decimals", str(curr.now()))
 
         return result.value['data']
     except:

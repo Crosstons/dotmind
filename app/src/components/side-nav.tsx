@@ -43,14 +43,9 @@ const SideNav = () => {
         </div>
         <div className="flex justify-center space-y-2 pb-6">
         <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select Network" />
+          <SelectTrigger className="w-[180px]" disabled>
+            <SelectValue placeholder="Substrates" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">XAXAXA</SelectItem>
-            <SelectItem value="dark">XBXBXB</SelectItem>
-            <SelectItem value="system">XCXCXC</SelectItem>
-          </SelectContent>
         </Select>
         </div>
       </div>

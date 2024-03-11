@@ -83,5 +83,40 @@
     "prompt": "transfer 10000000000 AZERO to Sam on Aleph Zero Testnet network",
     "response": "transfer executed successfully for 10000000000 to Sam using the rpc wss://aleph-zero-testnet-rpc.dwellir.com",
     "timestamp": "2024-03-10 15:59:08.991105"
+  },
+  {
+    "prompt": "what is the price of bitcoin?",
+    "response": "72375.905",
+    "timestamp": "2024-03-11 22:39:02.490087"
+  },
+  {
+    "prompt": "what is the price of ASTR?",
+    "response": "0.1653163882123984",
+    "timestamp": "2024-03-11 22:45:00.273920"
+  },
+  {
+    "prompt": "what is the balance of Sam on Aleph Zero Testnet?",
+    "response": "This is the raw balance of the address - 50000000000, please adjust for the decimals",
+    "timestamp": "2024-03-11 22:57:54.927868"
+  },
+  {
+    "prompt": "what is the price of DOT ?",
+    "response": "11.1845",
+    "timestamp": "2024-03-11 23:57:01.327328"
+  },
+  {
+    "prompt": "transfer 10000000 AZERO to Sam on Aleph Zero Testnet",
+    "response": "transfer executed successfully for 10000000 to Sam using the rpc wss://aleph-zero-testnet-rpc.dwellir.com",
+    "timestamp": "2024-03-11 23:59:45.134331"
+  },
+  {
+    "prompt": "what is the balance of Sam on Aleph Zero Testnet?",
+    "response": "This is the raw balance of the address - 50010000000, please adjust for the decimals",
+    "timestamp": "2024-03-12 00:00:18.803282"
+  },
+  {
+    "prompt": "what is the balance of Sam on Polkadot chain?",
+    "response": "This is the raw balance of the address - 0, please adjust for the decimals",
+    "timestamp": "2024-03-12 00:02:17.174492"
   }
 ]

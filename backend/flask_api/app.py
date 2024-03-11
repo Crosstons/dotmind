@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request 
+from flask_cors import CORS
 from db_json import chat_history_manager, private_key_manager, address_book, transfer_manager
 from ai_llm.query import process_query
 
 app = Flask("DotMind") 
+CORS(app)
 
 def run_app():
     app.run(debug=True)
@@ -24,7 +26,7 @@ def address_book():
     return response 
 
 @app.route('/scheduled_transfers/', methods=['GET']) 
-def address_book(): 
+def scheduled_transfers(): 
     # Load chat history data
     scheduled = transfer_manager.load_transfer_manager_data()
     response = jsonify(scheduled)
@@ -41,6 +43,7 @@ async def prompt():
     user_prompt = request.get_json()
     print(user_prompt)
     out = await process_query(user_prompt['prompt'])
-
+    response = jsonify(out)
+    response.headers.add('Access-Control-Allow-Origin', '*')
     # Validate the data and create the user (implementation omitted)
-    return jsonify(out)
+    return response

@@ -6,8 +6,7 @@
 
  Bringing The AI Revolution To The Polkadot Ecosystem - An Agent To Make Things Simpler
 
-[Demo]()&nbsp;&nbsp;•&nbsp;&nbsp;
-[Deck]()&nbsp;&nbsp;•&nbsp;&nbsp;
+[Demo](https://youtu.be/d3X5tAOxRRk?feature=shared)&nbsp;&nbsp;•&nbsp;&nbsp;
 [Figma](https://www.figma.com/file/Yf1ieeMtQUIQOpniDKJZOx/DotMind?type=design&mode=design)
 
 </div>
